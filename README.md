@@ -9,6 +9,7 @@
 	d. Autowiring primary bean (Example of @Primay with @Bean)
 	e. @Qualifier example
 	f. Autowiring through constructor
+	g. @Qualifier in constructor argument
 
 ## Importing and running project
 

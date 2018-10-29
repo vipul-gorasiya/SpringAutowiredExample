@@ -53,6 +53,9 @@ public class ExampleService {
 
 	@Autowired
 	private DAOInterface primaryDAOImpl;
+	
+	private ServiceInterface constructorQualifierServiceImpl;
+	
 
 	// Autowires primary ServiceInterface in case multiple implementations are
 	// available. If no primary are defined, NoUniqueBeanDefinitionException is
@@ -63,8 +66,9 @@ public class ExampleService {
 
 	// @Autowired is optional in case of single constructor. In case of multiple
 	// constructors, one of them must be annotated.
-	public ExampleService(ServiceImpl1 serviceImpl1) {
+	public ExampleService(ServiceImpl1 serviceImpl1, @Qualifier("serviceImpl2") ServiceInterface constructorQualifierServiceImpl) {
 		this.serviceImpl1 = serviceImpl1;
+		this.constructorQualifierServiceImpl = constructorQualifierServiceImpl;
 	}
 
 	public void printServiceNames() {
@@ -86,6 +90,10 @@ public class ExampleService {
 		System.out.println("================ Autowiring Through @Autowired + @Qualifier ===========");
 		System.out.println("'qualifierServiceImpl' is autowired with'" + qualifierServiceImpl.getClass()
 				+ "' since it is annotated with @Qualifier(\"serviceImpl1\").");
+		System.out.println();
+		System.out.println("================ Autowiring Through Constructor + @Qualifier ===========");
+		System.out.println("'constructorQualifierServiceImpl' is autowired with'" + constructorQualifierServiceImpl.getClass()
+				+ "' since it is annotated with @Qualifier(\"serviceImpl2\") in constructor.");
 		System.out.println();
 		System.out.println("================ Autowiring all beans of that type in collection ======");
 		System.out.println("The services available in Set are: ");
