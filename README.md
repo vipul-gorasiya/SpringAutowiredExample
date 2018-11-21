@@ -2,7 +2,7 @@
 
 ## How is it used in example
 
-1. ExampleService.java has following examples:
+1. [ExampleService.java](SpringAutowiredExample/src/main/java/com/vipul/ExampleService.java) has following examples:
 	- Autowiring of all beans of that type in Set, Array, List and Map
 	- Autowiring through strong types of beans
 	- Autowiring primary bean (Example of @Primary with @Service)
